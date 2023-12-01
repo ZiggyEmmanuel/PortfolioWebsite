@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<section class="portfolio" id="portfolio">
+    <div class="portfolio-container">
+        <div class="portfolio-box">
+            {% if project.Image %}
+                <img src="{{ project.Image.url }}">
+            {% endif %}
+        </div>
+        <div class="portfolio-layer">
+            <h4>{{ project.Title }}</h4>
+            <p>{{ project.Description }}</p>
+            <br>
+            <h3 class="Strong">Technology used:</h3>
+            <p>{{ project.Technology }}</p>
+        </div>
+    </div>
+</section>
+{% endblock page_content %}

@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %} Ziggy Emmanuel Portfolio {% endblock title %}</title>
+
+    <!-- =========== BOX ICONS =========== -->
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- =========== CSS ===========-->
+
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    
+</head>
+
+<body>
+
+    <!-- =========== HEADER DESIGN ===========-->
+
+    <header class="header">
+        <a href="{% url 'pages:home' %}" class="logo">{{ home_page.Name }}</a>
+
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="{% url 'pages:home' %}" class="active">home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact me</a>
+        </nav>
+    </header>
+    
+{% block page_content %}{% endblock page_content %}
+
+    <!-- =========== FOOTER SECTION ===========-->
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 by Ziggy Emmanuel | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="{% url 'pages:home' %}"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+    <!-- =========== SCROLL REVEAL ===========-->
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- =========== TYPED.JS =========== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- =========== SCRIPT.JS ===========-->
+    
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    
+</body>
+
+</html>

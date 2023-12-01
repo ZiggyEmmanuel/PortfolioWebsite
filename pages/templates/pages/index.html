@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<!-- =========== HOME SECTION DESIGN ===========-->
+
+<section class="home" id="home">
+    <div class="home-content">
+        <h3> Hello my name is</h3>
+        <h1>{{ home_page.Name }}</h1>
+        <h3>And I'm a <span class="multiple-text"></span></h3>
+        <p style="white-space: pre-line;">{{ home_page.Home_Copy }}</p>
+
+        <div class="social-media">
+            {% for sm in SM_info %}
+            <a  href="{{ sm.Socialmedia_Url }}"><i class='{{ sm.Social_Icon }}'></i></a>
+            {% endfor %}
+        </div>
+        
+        <a href="{{ cv_instance.pdf_file.url }}" download class="btn">Download CV</a>
+    </div>
+
+    <div class="home-img">
+        <img src="{{ home_page.Picture.url }}" alt="#">
+    </div>
+</section>
+
+<!-- =========== ABOUT SECTION DESIGN =========== -->
+
+<section class="about" id="about">
+    <div class="about-img">
+        <img src="{{ about_page.Profile_img.url }}" alt="#">
+    </div>
+    <div class="about-content">
+        <h2 class="heading">About <span>Me</span></h2>
+        <h3>{{ about_page.Career }}</h3>
+        <p style="white-space: pre-line;">{{ about_page.Description }}</p>
+        <a href="#" class="btn">Read More</a>
+    </div>
+</section>
+
+<!-- =========== SERVICES SECTION DESIGN ===========-->
+
+<section class="services" id="services">
+    <h2 class="heading">Our <span>Services</span></h2>
+
+    <div class="services-container">
+        {% for service in service_page %}
+        <div class="services-box">
+            <i class="{{ service.Icon }}"></i>
+            <h3>{{ service.Service_Name }}</h3>
+                {% for categories in service.services_set.all %}
+                <p>{{ categories.service }}</p>
+                <a href="#" class="btn">View Source Code</a>
+                {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<!-- =========== PORTFOLIO SECTION DESIGN =========== -->
+
+<section class="portfolio" id="portfolio">
+    <h2 class="heading">Latest <span>Project</span></h2>
+
+    <div class="portfolio-container">
+        {% for project in projects %}
+        <div class="portfolio-box">
+            {% if project.Image %}
+                <img src="{{ project.Image.url }}" alt="#">
+            {% endif %}
+            <div class="portfolio-layer">
+                <h4>{{ project.Title }}</h4>
+                <p>{{ project.Description | slice:":100" }}</p>
+                <a href="{% url 'portfolio:project_detail' project.pk %}"><i class='bx bx-link-external' ></i></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- =========== CONTACT ME SECTION DESIGN =========== -->
+
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me!</span></h2>
+
+    <form action="#">
+        <div class="input-box">
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email Address">
+        </div>
+
+        <div class="input-box">
+            <input type="number" placeholder="Mobile Number">
+            <input type="text" placeholder="Email Subject">
+        </div>
+
+        <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+        <input type="submit" value="Send Message" class="btn">
+    </form>
+</section>
+
+
+{% endblock page_content %}
